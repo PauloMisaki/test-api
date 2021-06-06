@@ -19,32 +19,21 @@ export class UsersController {
 
   @Post()
   async create(@Res() res: Response, @Body() createUserDto: CreateUserDto) {
-    try {
-      const newUser = await this.usersService.create(createUserDto);
-      res.status(HttpStatus.CREATED).json(newUser);
-    } catch (e) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e);
-    }
+    console.log(createUserDto);
+    const newUser = await this.usersService.create(createUserDto);
+    res.status(HttpStatus.CREATED).json(newUser);
   }
 
   @Get()
   async findAll(@Res() res: Response) {
-    try {
-      const users = await this.usersService.findAll();
-      res.status(HttpStatus.OK).json(users);
-    } catch (e) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e);
-    }
+    const users = await this.usersService.findAll();
+    res.status(HttpStatus.OK).json(users);
   }
 
   @Get('/:name')
   async findByName(@Res() res: Response, @Param('name') name: string) {
-    try {
-      const user = await this.usersService.findByName(name);
-      res.status(HttpStatus.OK).json(user);
-    } catch (e) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e);
-    }
+    const user = await this.usersService.findByName(name);
+    res.status(HttpStatus.OK).json(user);
   }
 
   @Patch(':id')
@@ -53,11 +42,7 @@ export class UsersController {
     @Body() body: UpdateUserDto,
     @Param('id') id: string,
   ) {
-    try {
-      const updatedUser = this.usersService.update(id, body);
-      res.status(HttpStatus.OK).json(updatedUser);
-    } catch (e) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e);
-    }
+    const updatedUser = this.usersService.update(id, body);
+    res.status(HttpStatus.OK).json(updatedUser);
   }
 }

@@ -10,7 +10,7 @@ import {
   IsEnum,
 } from 'class-validator';
 import { isCpf } from 'src/decorators/isCpf';
-import { Skills, UserStatus } from '.prisma/client';
+import { Skills, UserStatus } from '@prisma/client';
 
 export class CreateUserDto {
   @IsString()
