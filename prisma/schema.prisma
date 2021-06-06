@@ -10,6 +10,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum UserStatus {
+  validated
+  notValidated
+}
+
 enum Skills {
   Git
   React
@@ -20,13 +25,14 @@ enum Skills {
   Typescript
 }
 
-model Collaborator {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model User {
+  id        String     @id @default(cuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  status    UserStatus @default(notValidated)
   name      String
-  email     String   @unique
-  cpf       String   @unique
+  email     String     @unique
+  cpf       String     @unique
   phone     String?
   skills    Skills[]
 }
