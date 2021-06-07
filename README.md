@@ -23,7 +23,7 @@ $ yarn start:dev
 
 Criação de Usuário :
 
-    Rota : " http://localhost:3000/[NomeDoColaborador]/registrar
+    Rota : " POST http://localhost:3001/users
 
     Exemplo de retorno :
 
@@ -37,9 +37,9 @@ Criação de Usuário :
           "skills": ["Git"]
         }
 
-Validação de Usuário : [INCOMPLETA]
+Validação de Usuário : 
 
-    Rota : " http://localhost:3000/[NomeDoColaborador]/validar
+    Rota : " GET http://localhost:3001/users
 
     Exemplo de retorno :
         {
@@ -53,17 +53,21 @@ Validação de Usuário : [INCOMPLETA]
 
 Lista de Usuários :
 
-    Rota : " http://localhost:3000/registros
+    Rota : " PATCH http://localhost:3001/users/[ID do Usuário]
 
     Exemplo de retorno :
         {
           "name": "Paulo",
+          "phone": "11111111111",
+          "cpf": "111.111.111-00",
           "email": "ph.sorata@gmail.com",
           "status": "notValidated",
         }
 
         {
           "name": "Henrique",
+          "phone": "22222222222",
+          "cpf": "222.222.222-00",
           "email": "hp.ataros@gmail.com",
           "status": "notValidated",
         }
